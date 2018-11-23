@@ -30,3 +30,51 @@
     transform: rotate(360deg);
   }
 }
+
+.App .navbar{
+  padding-left:35px;
+  padding-right:35px;
+}
+
+.App .tableArea{
+  margin-left:0;
+  margin-right:0;
+}
+h1{
+  font-size:20px;
+  line-height: 24px;
+}
+
+.title{
+  font-weight: bold;
+}
+h3.title{
+  margin-top:30px;
+}
+.table th{
+  font-size:1.2em;
+}
+.table td{
+  font-size:1.1em;
+}
+.footer{
+  position: relative;
+  padding:10px;
+}
+.motion_logo{
+  position: absolute;
+  top:10px;
+  right:10px;
+}
+@media screen and (max-width:480px){
+  small{
+    display:block;
+    text-align:center;
+    margin:0 auto;
+  }
+  .motion_logo{
+    position: static;
+    display:block;
+    margin:10px auto;
+  }
+}
