@@ -50,39 +50,39 @@ const ProductBaseInfo = props => {
       <div className="col-sm">
         <div className="form-group">
           <select
-            onChange={e => props.colorChanged(e)}
-            value={props.product.color}
+            onChange={e => props.colourChanged(e)}
+            value={props.product.colour}
             style={{
-              backgroundColor: `rgb(${props.selectedColor.red},
-                ${props.selectedColor.green},
-                ${props.selectedColor.blue})`,
-              color: `rgb(${255 - props.selectedColor.red},
-                ${255 - props.selectedColor.green},
-                ${255 - props.selectedColor.blue})`
+              backgroundColor: `rgb(${props.selectedColour.red},
+                ${props.selectedColour.green},
+                ${props.selectedColour.blue})`,
+              colour: `rgb(${255 - props.selectedColour.red},
+                ${255 - props.selectedColour.green},
+                ${255 - props.selectedColour.blue})`
             }}
             className="form-control"
-            id="color"
+            id="colour"
           >
             <option
               style={{
                 backgroundColor: "white",
-                color: "black"
+                colour: "black"
               }}
             >
               Colour
             </option>
-            {props.colors.map(color => (
+            {props.colours.map(colour => (
               <option
-                key={color.id}
-                value={color.id}
+                key={colour.id}
+                value={colour.id}
                 style={{
-                  backgroundColor: `rgb(${color.red},
-                    ${color.green},${color.blue})`,
-                  color: `rgb(${255 - color.red},
-                    ${255 - color.green},${255 - color.blue})`
+                  backgroundColor: `rgb(${colour.red},
+                    ${colour.green},${colour.blue})`,
+                  colour: `rgb(${255 - colour.red},
+                    ${255 - colour.green},${255 - colour.blue})`
                 }}
               >
-                {color.name}
+                {colour.name}
               </option>
             ))}
           </select>

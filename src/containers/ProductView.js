@@ -8,7 +8,7 @@ class ProductView extends Component {
       customerName: '',
       suburb: '',
       material: '',
-      color: '',
+      colour: '',
       curtains: []
     },
     curtain: {
@@ -21,8 +21,8 @@ class ProductView extends Component {
     },
     suburbs: [],
     materials: [],
-    colors: [],
-    selectedColor: {
+    colours: [],
+    selectedColour: {
       red: 255,
       green: 255,
       blue: 255,
@@ -63,9 +63,9 @@ class ProductView extends Component {
     });
   }
 
-  colorChanged(event) {
+  colourChanged(event) {
     if (event.target.value === 'Colour') {
-      const selectedColor = {
+      const selectedColour = {
         red: 255,
         green: 255,
         blue: 255,
@@ -73,20 +73,20 @@ class ProductView extends Component {
       this.setState({
         product: {
           ...this.state.product,
-          color: ''
+          colour: ''
         },
-        selectedColor: selectedColor,
+        selectedColour: selectedColour,
       });
     } else {
-      const selectedColor = this.state.colors.find(
-        color => color.id === Number(event.target.value)
+      const selectedColour = this.state.colours.find(
+        colour => colour.id === Number(event.target.value)
       );
       this.setState({
         product: {
           ...this.state.product,
-          color: event.target.value
+          colour: event.target.value
         },
-        selectedColor: selectedColor,
+        selectedColour: selectedColour,
       });
     }
   }
@@ -138,15 +138,15 @@ class ProductView extends Component {
       const res = await fetch('/data'); 
       if(res.statusText !== 'No Content'){
         const product = await res.json();
-        let selectedColor = this.state.colors.find(
-          color => color.id === Number(product.color)
+        let selectedColour = this.state.colours.find(
+          colour => colour.id === Number(product.colour)
         );
-        if(!selectedColor){
-          selectedColor = {...this.state.selectedColor};
+        if(!selectedColour){
+          selectedColour = {...this.state.selectedColour};
         }
         this.setState({
           product: product,
-          selectedColor: selectedColor
+          selectedColour: selectedColour
         });
       }
     } catch(e) {
@@ -202,21 +202,21 @@ class ProductView extends Component {
       const colours = await coloursRes.json();
 
       this.setState({
-        colors: colours,
+        colours: colours,
       });
 
       const res = await fetch('/data'); 
       if(res.statusText !== 'No Content'){
         const product = await res.json();
-        let selectedColor = colours.find(
-          color => color.id === Number(product.color)
+        let selectedColour = colours.find(
+          colour => colour.id === Number(product.colour)
         );
-        if(!selectedColor){
-          selectedColor = {...this.state.selectedColor};
+        if(!selectedColour){
+          selectedColour = {...this.state.selectedColour};
         }
         this.setState({
           product: product,
-          selectedColor: selectedColor
+          selectedColour: selectedColour
         });
       }
     } catch(e) {
@@ -237,10 +237,10 @@ class ProductView extends Component {
           product={this.state.product}
           suburbs={this.state.suburbs}
           materials={this.state.materials}
-          colors={this.state.colors}
-          selectedColor={this.state.selectedColor}
+          colours={this.state.colours}
+          selectedColour={this.state.selectedColour}
           formControlChanged={this.formControlChanged.bind(this)}
-          colorChanged={this.colorChanged.bind(this)}
+          colourChanged={this.colourChanged.bind(this)}
         />
         <Curtains
           curtains={this.state.product.curtains}
