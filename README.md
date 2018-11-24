@@ -4,10 +4,10 @@ motiondesign-react
 ## Project setup
 ### Init
 ```
-yarn install
+yarn or yarn install
 ```
 
 ### Start
 ```
-yarn run start
+yarn start or yarn run start
 ```

@@ -220,6 +220,7 @@ class ProductView extends Component {
           selectedColour={this.state.selectedColour}
           formControlChanged={this.formControlChanged.bind(this)}
           colourChanged={this.colourChanged.bind(this)}
+          addCurtain={this.addCurtain.bind(this)}
         />
         <Curtains
           curtains={this.state.product.curtains}

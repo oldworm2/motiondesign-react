@@ -51,6 +51,10 @@ const ProductBaseInfo = props => {
         <div className="form-group">
           <select
             onChange={e => props.colourChanged(e)}
+            onKeyDown={e => 0 === props.product.curtains.length 
+              && e.keyCode === 9 
+              && !e.shiftKey 
+              && props.addCurtain()}
             value={props.product.colour}
             style={{
               backgroundColor: `rgb(${props.selectedColour.red},
