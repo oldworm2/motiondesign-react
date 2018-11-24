@@ -116,7 +116,7 @@ class ProductView extends Component {
       if (! response.ok) {
         throw new Error(response.statusText);
       } 
-      this.reloadData();
+      this.getData();
       this.setState({
         showMessageBox: true,
         message: 'Saved',
@@ -133,8 +133,66 @@ class ProductView extends Component {
     }
   }
 
-  async reloadData() {
-    try {
+  closeShowMessageBox() {
+    this.setState({showMessageBox: false});
+  }
+
+  async getSuburbs(){
+    try{
+      const res = await fetch('/suburbs');
+      if(!res.ok) throw new Error(res.statusText);
+      const data = await res.json();
+
+      this.setState({
+        suburbs: data,
+      });
+    } catch(e) {
+      this.setState({
+        showMessageBox: true,
+        message: e.message,
+        messageLevel: 'Error'
+      });
+    }
+  }
+
+  async getMaterials(){
+    try{
+      const res = await fetch('/materials');
+      if(!res.ok) throw new Error(res.statusText);
+      const data = await res.json();
+
+      this.setState({
+        materials: data,
+      });
+    } catch(e) {
+      this.setState({
+        showMessageBox: true,
+        message: e.message,
+        messageLevel: 'Error'
+      });
+    }
+  }
+
+  async getColours(){
+    try{
+      const res = await fetch('/colours');
+      if(!res.ok) throw new Error(res.statusText);
+      const data = await res.json();
+
+      this.setState({
+        colours: data,
+      });
+    } catch(e) {
+      this.setState({
+        showMessageBox: true,
+        message: e.message,
+        messageLevel: 'Error'
+      });
+    }
+  }
+
+  async getData(){
+    try{
       const res = await fetch('/data'); 
       if(res.statusText !== 'No Content'){
         const product = await res.json();
@@ -150,83 +208,19 @@ class ProductView extends Component {
         });
       }
     } catch(e) {
-      console.error(e);
       this.setState({
         showMessageBox: true,
         message: e.message,
         messageLevel: 'Error'
       });
     }
-  }
-
-  closeShowMessageBox() {
-    this.setState({showMessageBox: false});
   }
 
   async componentDidMount() {
-    try {
-      fetch('/suburbs').then((res) => {
-          if(!res.ok) throw new Error(res.statusText);
-          return res.json();
-        }).then((data) => {
-          this.setState({
-            suburbs: data,
-          });
-        }).catch((e) => {
-          console.error(e);
-          this.setState({
-            showMessageBox: true,
-            message: e.message,
-            messageLevel: 'Error'
-          });
-        }); 
-      fetch('/materials').then((res) => {
-          if(!res.ok) throw new Error(res.statusText);
-          return res.json();
-        }).then((data) => {
-          this.setState({
-            materials: data,
-          });
-        }).catch((e) => {
-          console.error(e);
-          this.setState({
-            showMessageBox: true,
-            message: e.message,
-            messageLevel: 'Error'
-          });
-        });
-       
-      const coloursRes = await fetch('/colours');
-      if(!coloursRes.ok) throw new Error(coloursRes.statusText);
-      
-      const colours = await coloursRes.json();
-
-      this.setState({
-        colours: colours,
-      });
-
-      const res = await fetch('/data'); 
-      if(res.statusText !== 'No Content'){
-        const product = await res.json();
-        let selectedColour = colours.find(
-          colour => colour.name === product.colour
-        );
-        if(!selectedColour){
-          selectedColour = {...this.state.selectedColour};
-        }
-        this.setState({
-          product: product,
-          selectedColour: selectedColour
-        });
-      }
-    } catch(e) {
-      console.error(e);
-      this.setState({
-        showMessageBox: true,
-        message: e.message,
-        messageLevel: 'Error'
-      });
-    }
+    this.getSuburbs();
+    this.getMaterials(); 
+    await this.getColours();
+    this.getData();
   }
 
   render() {
