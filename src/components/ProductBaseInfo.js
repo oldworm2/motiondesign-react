@@ -23,7 +23,7 @@ const ProductBaseInfo = props => {
             value={props.product.suburb}
             className="form-control"
           >
-            <option>Suburb</option>
+            <option disabled value="">Suburb</option>
             {props.suburbs.map(suburb => (
               <option key={suburb.id}>
                 {suburb.name}, {suburb.city}
@@ -40,7 +40,7 @@ const ProductBaseInfo = props => {
             value={props.product.material}
             className="form-control"
           >
-            <option>Material</option>
+            <option disabled value="">Material</option>
             {props.materials.map(material => (
               <option key={material.id}>{material.name}</option>
             ))}
@@ -56,14 +56,14 @@ const ProductBaseInfo = props => {
               backgroundColor: `rgb(${props.selectedColour.red},
                 ${props.selectedColour.green},
                 ${props.selectedColour.blue})`,
-              colour: `rgb(${255 - props.selectedColour.red},
+              color: `rgb(${255 - props.selectedColour.red},
                 ${255 - props.selectedColour.green},
                 ${255 - props.selectedColour.blue})`
             }}
             className="form-control"
             id="colour"
           >
-            <option
+            <option disabled value=""
               style={{
                 backgroundColor: "white",
                 colour: "black"
@@ -74,11 +74,11 @@ const ProductBaseInfo = props => {
             {props.colours.map(colour => (
               <option
                 key={colour.id}
-                value={colour.id}
+                value={colour.name}
                 style={{
                   backgroundColor: `rgb(${colour.red},
                     ${colour.green},${colour.blue})`,
-                  colour: `rgb(${255 - colour.red},
+                  color: `rgb(${255 - colour.red},
                     ${255 - colour.green},${255 - colour.blue})`
                 }}
               >

@@ -79,7 +79,7 @@ class ProductView extends Component {
       });
     } else {
       const selectedColour = this.state.colours.find(
-        colour => colour.id === Number(event.target.value)
+        colour => colour.name === event.target.value
       );
       this.setState({
         product: {
@@ -139,7 +139,7 @@ class ProductView extends Component {
       if(res.statusText !== 'No Content'){
         const product = await res.json();
         let selectedColour = this.state.colours.find(
-          colour => colour.id === Number(product.colour)
+          colour => colour.name === product.colour
         );
         if(!selectedColour){
           selectedColour = {...this.state.selectedColour};
@@ -209,7 +209,7 @@ class ProductView extends Component {
       if(res.statusText !== 'No Content'){
         const product = await res.json();
         let selectedColour = colours.find(
-          colour => colour.id === Number(product.colour)
+          colour => colour.name === product.colour
         );
         if(!selectedColour){
           selectedColour = {...this.state.selectedColour};
