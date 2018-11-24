@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import ProductBaseInfo from "../components/ProductBaseInfo";
 import Curtains from "../components/Curtains";
+import 'whatwg-fetch';
 
 class ProductView extends Component {
   state = {
