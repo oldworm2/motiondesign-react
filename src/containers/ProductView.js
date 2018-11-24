@@ -64,37 +64,21 @@ class ProductView extends Component {
   }
 
   colourChanged(event) {
-    if (event.target.value === 'Colour') {
-      const selectedColour = {
-        red: 255,
-        green: 255,
-        blue: 255,
-      }
-      this.setState({
-        product: {
-          ...this.state.product,
-          colour: ''
-        },
-        selectedColour: selectedColour,
-      });
-    } else {
-      const selectedColour = this.state.colours.find(
-        colour => colour.name === event.target.value
-      );
-      this.setState({
-        product: {
-          ...this.state.product,
-          colour: event.target.value
-        },
-        selectedColour: selectedColour,
-      });
-    }
+    const selectedColour = this.state.colours.find(
+      colour => colour.name === event.target.value
+    );
+    this.setState({
+      product: {
+        ...this.state.product,
+        colour: event.target.value
+      },
+      selectedColour: selectedColour,
+    });  
   }
 
   curtainChanged(event, index) {
     const curtains = [...this.state.product.curtains];
     curtains[index][event.target.name] = event.target.value;
-
     this.setState({
       product: {
         ...this.state.product,
@@ -260,7 +244,6 @@ const MessageBox = props => {
   return (
     <div className="alert alert-dismissible alert-warning" 
       style={props.show 
-        // ? {display: 'block', position: 'fixed' , top: 70, right: 40} 
         ? {display: 'block'} 
         : {display: 'none'}}>
       <button onClick={props.closeShowMessageBox} type="button" 
