@@ -11,7 +11,7 @@ class App extends Component {
     return (
       <div className="App">
         <Header user={this.state.user} />
-        <main className="p-4">
+        <main className="p-4 mb-5">
           <ProductView />
         </main>
         <Footer />
