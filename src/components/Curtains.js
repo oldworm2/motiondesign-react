@@ -4,7 +4,7 @@ const Curtains = props => {
   return (
     <React.Fragment>
       <Title />
-      <div className="row tableArea">
+      <div className="row table-area">
         <table className="table table-hover ">
           <thead>
             <tr className="table-success">
