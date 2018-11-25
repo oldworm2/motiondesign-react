@@ -107,7 +107,7 @@ class ProductView extends Component {
         message: 'Saved',
         messageLevel: 'Success'
       });
-      setInterval(() => this.setState({showMessageBox: false}), 3000);
+      setTimeout(() => this.setState({showMessageBox: false}), 2000);
     } catch(e) {
       console.error(e);
       this.setState({
